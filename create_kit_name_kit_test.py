@@ -20,7 +20,7 @@ def negative_assert_code_400(kit_body, response):
 # Prueba 1: Crear un kit con el 1 carácter en el nombre
 def test_create_kit_with_one_character_name():
     # Obtener el cuerpo de la solicitud con un nombre de kit de un solo carácter
-    kit_body = data.get_kit_body("a")
+    kit_body = data.get_kit_body(data.one_letter)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar la solicitud para crear un nuevo kit
@@ -30,7 +30,7 @@ def test_create_kit_with_one_character_name():
 
 # Prueba 2: Crear una solicitud con un nombre de kit largo (511 caracteres)
 def test_create_kit_with_long_character_name():
-    kit_body = data.get_kit_body("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
+    kit_body = data.get_kit_body(data.with_long_character_name)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar la solicitud para crear un nuevo kit
@@ -40,7 +40,7 @@ def test_create_kit_with_long_character_name():
 
 # Prueba 3: Crear una solicitud con el nombre vacío da error
 def test_create_kit_with_empty_name_get_error_response():
-    kit_body = data.get_kit_body("")
+    kit_body = data.get_kit_body(data.empty_name)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar una solicitud para crear un nuevo kit
@@ -50,7 +50,7 @@ def test_create_kit_with_empty_name_get_error_response():
 
 # Prueba 4: Crear un kit con un nombre con un número de caracteres mayor a la cantidad permitida (512) da error
 def test_create_kit_with_more_characters_than_allowed():
-    kit_body = data.get_kit_body("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD")
+    kit_body = data.get_kit_body(data.more_characters_than_allowed)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar una solicitud para crear un nuevo kit
@@ -60,7 +60,7 @@ def test_create_kit_with_more_characters_than_allowed():
 
 # Prueba 5: Crear un kit con caracteres especiales en el nombre
 def test_create_kit_with_special_characters():
-    kit_body = data.get_kit_body("!#%@")
+    kit_body = data.get_kit_body(data.special_characters)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar la solicitud para crear un nuevo kit
@@ -70,7 +70,7 @@ def test_create_kit_with_special_characters():
 
 # Prueba 6: Crear un kit con espacios en el nombre
 def test_create_kit_with_spaces():
-    kit_body = data.get_kit_body("A Aaa")
+    kit_body = data.get_kit_body(data.with_spaces)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar la solicitud para crear un nuevo kit
@@ -80,7 +80,7 @@ def test_create_kit_with_spaces():
 
 # Prueba 7: Crear kit con números en el nombre
 def test_create_kit_with_numbers():
-    kit_body = data.get_kit_body("Aaa123")
+    kit_body = data.get_kit_body(data.with_numbers)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar la solicitud para crear un nuevo kit
@@ -90,7 +90,7 @@ def test_create_kit_with_numbers():
 
 # Prueba 8: Crear un kit sin parámetros da error
 def test_create_kit_no_parameters():
-    kit_body = data.get_kit_body({})
+    kit_body = data.get_kit_body(data.no_parameters)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar una solicitud para crear un nuevo kit
@@ -100,7 +100,7 @@ def test_create_kit_no_parameters():
 
 # Prueba 9: Crear un kit con un valor numérico como nombre da error
 def test_create_kit_with_number_parameter():
-    kit_body = data.get_kit_body(123)
+    kit_body = data.get_kit_body(data.number_parameter)
     # Obtener el token de autenticación
     auth_token = sender_stand_request.get_new_user_token()
     # Enviar una solicitud para crear un nuevo kit
